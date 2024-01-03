@@ -1,9 +1,9 @@
 name: Repository Cleanup
 
 on:
-  repository:
-    types:
-      - created
+  push:
+    branches:
+      - master
 
 jobs:
   cleanup:
