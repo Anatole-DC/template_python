@@ -30,7 +30,7 @@ jobs:
       - name: Remove cleanup files
         run : |
           # rm -fr .github/workflows/cleanup.yml
-          rm -fr scripts/rename.sh
+          rm -fr script/
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
