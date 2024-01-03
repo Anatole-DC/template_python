@@ -66,8 +66,8 @@ This template is configured to work with the VSCode editor, but it does not requ
 ### Clone the repository
 
 ```bash
-git clone <you-repository url>
-cd <repostory-folder>
+git clone https://github.com/Anatole-DC/template_python
+cd template_python
 ```
 
 ### Install the dependencies
