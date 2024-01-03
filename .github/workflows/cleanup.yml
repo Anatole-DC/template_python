@@ -24,7 +24,8 @@ jobs:
       - name: Cleanup repository
         run: |
           chmod +x script/rename.sh
-          ./script/rename.sh -f README.md --find "PYTHON TEMPLATE" --replace-with ${{ github.event.repository.name }}
+          CAPITALIZED_NAME=$(echo "${{ github.event.repository.name }}" | sed 's/_/ /g' | awk '{print toupper($0)}')
+          ./script/rename.sh -f README.md --find "PYTHON TEMPLATE" --replace-with $CAPITALIZED_NAME
 
       - name: Remove cleanup files
         run : |
