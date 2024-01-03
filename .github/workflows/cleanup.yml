@@ -9,6 +9,7 @@ jobs:
   cleanup:
     runs-on: ubuntu-latest
 
+    # Prevent the action to run on the template repository
     if: github.event.repository.name != 'template_python'
 
     permissions:
@@ -22,7 +23,8 @@ jobs:
 
       - name: Cleanup repository
         run: |
-          ./script/rename.sh -f $GITHUB_WORKSPACE/your-file.txt --find "PROJECT NAME" --replace-with ${GITHUB_REPOSITORY}
+          chmod +x script/rename.sh
+          ./script/rename.sh -f README.md --find "PYTHON TEMPLATE" --replace-with ${{ github.event.repository.name }}
 
       - name: Remove cleanup files
         run : |
