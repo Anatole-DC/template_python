@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Prevent the action to run on the template repository
-    if: ${GITHUB_REPOSITORY} != 'Anatole-DC/template_python'
+    if: ${{ github.event.repository.name }} != 'template_python'
 
     permissions:
       # Give the default GITHUB_TOKEN write permission to commit and push the
@@ -23,6 +23,9 @@ jobs:
 
       - name: Make script executable
         run: chmod +x script/rename.sh
+
+      - name: Test command output
+        run: echo ${{ github.event.repository.name }}
 
       - name: Cleanup README
         run: |
