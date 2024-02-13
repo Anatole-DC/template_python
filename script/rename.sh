@@ -1,22 +1,29 @@
 #!/bin/bash
 
+sanitize() {
+    echo "$1" | sed 's/\//\\\//g'
+}
+
 usage() {
     echo "Usage: $0 -f <file> [-f <file2> ...] (--find <string> --replace-with <replacement_string> | --from <start_line> [--to <end_line>] --replace-with <replacement_string>)"
     exit 1
 }
 
 replace_with_find() {
-    sed -i "s/$find/$replace_with/g" "$file"
+    sanitized_find=$(sanitize "$find")
+    sanitized_replace_with=$(sanitize "$replace_with")
+    sed -i "s/$sanitized_find/$sanitized_replace_with/g" "$file"
 }
 
 replace_with_range() {
+    sanitized_replace_with=$(sanitize "$replace_with")
     if [ -z "$from" ]; then
         from=1
     fi
     if [ -z "$to" ]; then
         to='$'
     fi
-    sed -i "${from},${to}c $replace_with" "$file"
+    sed -i "${from},${to}c $sanitized_replace_with" "$file"
 }
 
 while [ "$#" -gt 0 ]; do
