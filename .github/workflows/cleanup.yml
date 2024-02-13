@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Prevent the action to run on the template repository
-    if: github.event.repository.name != 'template_python'
+    if: ${GITHUB_REPOSITORY} != 'Anatole-DC/template_python'
 
     permissions:
       # Give the default GITHUB_TOKEN write permission to commit and push the
@@ -21,13 +21,15 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Cleanup repository
+      - name: Make script executable
+        run: chmod +x script/rename.sh
+
+      - name: Cleanup README
         run: |
-          chmod +x script/rename.sh
-          CAPITALIZED_NAME=$(echo ${{ github.event.repository.name }} | sed -E 's/([a-z0-9])([A-Z])/\1 \2/g; s/[-_]/ /g' | awk '{print toupper($0)}')
-          ./script/rename.sh -f README.md --find "PYTHON TEMPLATE" --replace-with "$CAPITALIZED_NAME"
-          ./script/rename.sh -f README.md --from 12 --to 16 --replace-with "\n"
-          ./script/rename.sh -f README.md --find "Anatole-DC/template_python" --replace-with "$GITHUB_REPOSITORY"
+          CAPITALIZED_NAME=$(echo "${{ github.event.repository.name }}" | sed -E 's/([a-z0-9])([A-Z])/\1 \2/g; s/[-_]/ /g' | awk '{print toupper($0)}')
+          ./script/rename.sh -f README.md --find "PYTHON TEMPLATE" --replace-with "${CAPITALIZED_NAME}"
+          ./script/rename.sh -f README.md --from 12 --to 15 --replace-with "\\"
+          ./script/rename.sh -f README.md --find "Anatole-DC/template_python" --replace-with "${GITHUB_REPOSITORY}"
           ./script/rename.sh -f README.md --find "template_python" --replace-with ${{ github.event.repository.name }}
 
       - name: Remove cleanup files
