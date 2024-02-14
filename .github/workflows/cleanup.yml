@@ -49,6 +49,8 @@ jobs:
         run: |
           BASE_TEMPLATE_REPOSITORY_DESCRIPTION=$(curl https://api.github.com/repos/Anatole-DC/template_python  2>/dev/null | grep description | head -n 1 | sed 's/"description": "\(.*\)",/\1/')
           REPOSITORY_DESCRIPTION=$(curl https://api.github.com/repos/${GITHUB_REPOSITORY}  2>/dev/null | grep description | head -n 1 | sed 's/"description": "\(.*\)",/\1/')
+          echo $BASE_TEMPLATE_REPOSITORY_DESCRIPTION
+          echo $REPOSITORY_DESCRIPTION
           ./script/rename.sh -f README.md -f pyproject.toml --find "${BASE_TEMPLATE_REPOSITORY_DESCRIPTION}" --replace-with "${REPOSITORY_DESCRIPTION}"
 
       # - name: Remove cleanup files
