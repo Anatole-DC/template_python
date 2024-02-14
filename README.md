@@ -12,7 +12,16 @@ _<h4 align="center">Base template repository for python projects.</h4>_
 
 To get started, you can [use this template](https://github.com/new?template_name=template_python&template_owner=Anatole-DC) from the repository on github. This will create a new repository with this template as base structure.
 
-You will need to rename all "python_template" mentions, in [this markdown](README.md), the [pyproject.toml file](pyproject.toml), the [launch.json](.vscode/launch.json), and the [library's root folder](python_template/).
+When the repository will be created, a [cleanup action](.github/workflows/cleanup.yml) will be triggered and will remove all template related name by the new repository informations. The following changes will be applied :
+- All the following will be replaced by your repository's name in snake case :
+  - The code source directory (currently "python_template")
+  - All occurences of `python_template` in the [pyproject.toml](pyproject.toml) file and the [.vscode launch configs](.vscode/launch.json).
+- The [README subtitle](README.md#L3) and the pyproject.toml will be replaced by your repository description
+- All mentions of the author will be replaced by the repository owner's github name
+- All github urls will be updated to match the new repository urls
+
+> The cleanup action will be triggered once and then all related files will be deleted (including the action).
+> If an error occures during the process, please [report an issue](https://github.com/Anatole-DC/template_python/issues) for the problem to be fixed as soon as possible.
 
 ___
 
