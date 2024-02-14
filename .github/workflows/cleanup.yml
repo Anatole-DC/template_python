@@ -53,10 +53,10 @@ jobs:
           echo $REPOSITORY_DESCRIPTION
           ./script/rename.sh -f README.md -f pyproject.toml --find "${BASE_TEMPLATE_REPOSITORY_DESCRIPTION}" --replace-with "${REPOSITORY_DESCRIPTION}"
 
-      # - name: Remove cleanup files
-      #   run : |
-      #     rm -fr .github/workflows/cleanup.yml
-      #     rm -fr script/
+      - name: Remove cleanup files
+        run : |
+          rm -fr .github/workflows/cleanup.yml
+          rm -fr script/
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
