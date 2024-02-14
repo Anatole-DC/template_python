@@ -23,6 +23,7 @@ body:
   - type: checkboxes
     id: terms
     attributes:
+      label: Term validation
       options:
         - label: I agree with the terms of the feature request
           required: true
