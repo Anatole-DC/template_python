@@ -33,6 +33,3 @@ jobs:
 
     - name: Tests
       run: poetry run pytest
-
-    - name: Test value
-      run: echo ${{ github.event.repository.name }}
