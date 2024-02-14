@@ -28,13 +28,13 @@ body:
 
   # Project link
   - type: input
-      id: project-link
-      attributes:
-        label: Project url (if public repository)
-        description: Your project github url
-        placeholder: ex. https://github.com/user/project
-      validations:
-        required: false
+    id: project-link
+    attributes:
+      label: Project url (if public repository)
+      description: Your project github url
+      placeholder: ex. https://github.com/user/project
+    validations:
+      required: false
 
   # The ci-cd failed steps
   - type: dropdown
