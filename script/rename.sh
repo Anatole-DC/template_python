@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sanitize() {
-    echo "$1" | sed 's/\//\\\//g'
+    echo "$1" | sed 's/\//\\\//g' | awk '{$1=$1};1'
 }
 
 usage() {
@@ -12,6 +12,7 @@ usage() {
 replace_with_find() {
     sanitized_find=$(sanitize "$find")
     sanitized_replace_with=$(sanitize "$replace_with")
+    # echo "Trying to replace '${sanitized_find}' by '${sanitized_replace_with}'"
     sed -i "s/$sanitized_find/$sanitized_replace_with/g" "$file"
 }
 
