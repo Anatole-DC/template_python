@@ -28,7 +28,7 @@ jobs:
         run: |
           CAPITALIZED_NAME=$(echo "${{ github.event.repository.name }}" | sed -E 's/([a-z0-9])([A-Z])/\1 \2/g; s/[-_]/ /g' | tr '[:lower:]' '[:upper:]')
           ./script/rename.sh -f README.md --find "PYTHON TEMPLATE" --replace-with "${CAPITALIZED_NAME}"
-          ./script/rename.sh -f README.md --from 12 --to 15 --replace-with "\\"
+          ./script/rename.sh -f README.md --from 12 --to 24 --replace-with "\\"
           ./script/rename.sh -f README.md --find "Anatole-DC/template_python" --replace-with "${GITHUB_REPOSITORY}"
           ./script/rename.sh -f README.md --find "template_python" --replace-with ${{ github.event.repository.name }}
           ./script/rename.sh -f README.md --find "Anatole de Chauveron" --replace-with "${GITHUB_REPOSITORY_OWNER}"

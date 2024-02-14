@@ -21,7 +21,7 @@ When the repository will be created, a [cleanup action](.github/workflows/cleanu
 - All github urls will be updated to match the new repository urls
 
 > The cleanup action will be triggered once and then all related files will be deleted (including the action).
-> If an error occures during the process, please [report an issue]() for the problem to be fixed as soon as possible.
+> If an error occures during the process, please [report an issue](https://github.com/Anatole-DC/template_python/issues) for the problem to be fixed as soon as possible.
 
 ___
 
