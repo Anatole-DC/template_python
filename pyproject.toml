@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "python_template"
 version = "0.0.0"
-description = ""
+description = "Base template repository for python projects."
 authors = ["Your Name <your-email@gmail.com>"]
 readme = "README.md"
 
