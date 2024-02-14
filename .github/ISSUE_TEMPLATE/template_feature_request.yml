@@ -16,7 +16,6 @@ body:
 
   - type: markdown
     attributes:
-      label: Terms of the feature request
       value: |
         This project was created as a python project starter that uses poetry as a dependency manager.
         Therefore, requests regarding very specific dependencies (like Flask or OpenCV) or extensive features will be considered as out of this project's scope.
